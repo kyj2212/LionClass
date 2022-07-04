@@ -1,8 +1,0 @@
-Hello
-nonono
-hihi
-<<<<<<< HEAD
-workspace B mod
-=======
-workspace A mod
->>>>>>> 40f8ea28f6013aa5785b4b04f2ccc3eb6932b691

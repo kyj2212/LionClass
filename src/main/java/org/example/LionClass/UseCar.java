@@ -45,6 +45,10 @@ class Car {
     int velocity;
     String name;
 
+    Car(){
+        this("레이",0);
+    }
+
     Car(String name, int velocity){
         this.name = name;
         this.velocity=velocity;
