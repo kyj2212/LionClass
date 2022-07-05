@@ -1,3 +1,5 @@
+package com.ll.exam;
+
 public class Calculator {
 
     static int result;
@@ -17,25 +19,32 @@ public class Calculator {
 
         multiply(5,2);
         // 출력 => 결과 : 10
+
+
     }
 
 
-    static void plus(int a, int b){
-        result = a+b;
-        System.out.println("result : "+result);
+    static int plus(int a, int b){
+        System.out.println("result : "+ (result=a+b));
+        return result ;
     }
-    static void substract(int a, int b){
+    static int substract(int a, int b){
         result = a-b;
         System.out.println("result : "+result);
+        return result;
     }
-    static void multiply(int a, int b){
+    static int multiply(int a, int b){
         result = a*b;
         System.out.println("result : "+result);
+        return result;
     }
-    static void divide(int a, int b){
+    static int divide(int a, int b){
         result = a/b;
         System.out.println("result : "+result);
+        return result;
     }
+
+
 
 }
 
