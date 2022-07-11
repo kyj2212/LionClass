@@ -1,36 +1,35 @@
 package org.example.LionClass;
 
-import java.util.ArrayList;
-
 public class Weapon {
 
     public String name;
     public int damage;
     public int durability;
 
-    public String type="무기";
+    public String type = "무기";
 
-    public Weapon(){
-        this("주먹",10,100);
-    }
-    Weapon(String name, int damage, int durability){
-        this.name=name;
-        this.damage =damage;
-        this.durability=durability;
+    public Weapon() {
+        this("주먹", 10, 100);
     }
 
-    void attack(){
-        this.durability-=10;
-        System.out.println(this.name + "으로 " +this.damage + " 공격합니다. (내구도 : "+this.durability+")");
+    Weapon(String name, int damage, int durability) {
+        this.name = name;
+        this.damage = damage;
+        this.durability = durability;
     }
 
-    public String toString(){
+    void attack() {
+        this.durability -= 10;
+        System.out.println(this.name + "으로 " + this.damage + " 공격합니다. (내구도 : " + this.durability + ")");
+    }
+
+    public String toString() {
         return this.name;
     }
 }
 
 
-class UseWeapon {
+class Fight {
     public static void main(String[] args) {
 
         // 다형성 : 참조변수와 인스턴스의 연결, 참조변수를 통해 인스턴스를 가져올때 , 부모클래스의 인스턴스 변수값을 보존하고 싶을 때
@@ -68,10 +67,10 @@ class UseWeapon {
         Fighter f3 = new Fighter("전사2",50);
         Fighter f4 = new Fighter("전사3",600);
 
-      //  f2.attack();
-      //  f3.attack();
-      //  f4.attack();
-      //  f4.attack();
+        //  f2.attack();
+        //  f3.attack();
+        //  f4.attack();
+        //  f4.attack();
 
         System.out.println("=== 문제 1 ===");
         Fighter a1 = new Fighter("칸",100);

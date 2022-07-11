@@ -4,7 +4,11 @@ import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.*;
 
+
+
 public class AppTest {
+
+/*
     @Test
     public void plusTest01(){
         int a,b; // 1~100 까지 임의의 자연수 생성
@@ -46,4 +50,7 @@ public class AppTest {
         int rs = Calculator.divide((a = (int)(Math.random()*1000)),(b = (int)(Math.random()*1000)));
         assertEquals(a/b,rs);
     }
+
+ */
+
 }
