@@ -1,4 +1,4 @@
-package org.example.LionClass;
+package org.example.LionClass.ch1to13;
 
 public class Bow extends Weapon {
 

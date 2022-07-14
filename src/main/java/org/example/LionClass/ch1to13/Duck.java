@@ -1,4 +1,4 @@
-package org.example.LionClass;
+package org.example.LionClass.ch1to13;
 // 문제 : 아래와 같이 출력되도록 해주세요.
 // 조건 : 소스코드 중복이 없어야 합니다.
 // 조건 : 복잡한 상속을 써도 됩니다.

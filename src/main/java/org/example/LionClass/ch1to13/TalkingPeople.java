@@ -1,4 +1,4 @@
-package org.example.LionClass;
+package org.example.LionClass.ch1to13;
 
 // 문제 : 사람을 말하게 해주세요.
 public class TalkingPeople {

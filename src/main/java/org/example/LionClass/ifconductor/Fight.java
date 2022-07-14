@@ -1,8 +1,8 @@
 package org.example.LionClass.ifconductor;
 
-import org.example.LionClass.Bow;
-import org.example.LionClass.Nife;
-import org.example.LionClass.Weapon;
+import org.example.LionClass.ch1to13.Bow;
+import org.example.LionClass.ch1to13.Nife;
+import org.example.LionClass.ch1to13.Weapon;
 
 class Fighter {
     String name;
