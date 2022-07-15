@@ -39,7 +39,7 @@ public class ArrayListTest {
     public void test__get(){
         ArrayList<Integer> alist = new ArrayList<>();
         alist.add(100);
-        assertEquals(100,alist.get(1));
+        assertEquals(100,alist.get(0).intValue());
     }
 
 }

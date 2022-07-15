@@ -47,7 +47,16 @@ public class MakeArrayList {
             }
         }
 
-        public E get(E i) {
+        public E get(int idx) {
+            if(checkIdxBounds(idx))
+                return (E)arr[idx];
+            else return null;
+        }
+
+        private boolean checkIdxBounds(int idx) {
+            if(idx<size) return true;
+            System.err.println("[IndexOutBoundsException] get("+ idx+")은 boundary를 넘었습니다.");
+            return false;
         }
     }
 }
