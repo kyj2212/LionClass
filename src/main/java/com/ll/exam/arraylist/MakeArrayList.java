@@ -23,10 +23,7 @@ public class MakeArrayList {
         }
 
         public void add(E data) {
-            if(isOverCapacity())
-                grow();
-            arr[size]=data;
-            size++;
+            add(data,size);
         }
 
         private boolean isOverCapacity() {
@@ -72,6 +69,27 @@ public class MakeArrayList {
             }
             size--;
             return (E)removed;
+        }
+
+        public void showAllelement() {
+            for(int i =0;i<size;i++){
+                System.out.printf(arr[i]+" ");
+            }
+        }
+
+        public void add(E data, int idx) {
+            if(isOverCapacity())
+                grow();
+            Object [] tmp= new Object[size-idx];
+
+            for(int i=0; i<size-idx;i++)
+                tmp[i] = arr[i+idx];
+
+            arr[idx]=data;
+            for (int i=0;i<size-idx;i++)
+                arr[i+idx+1]=tmp[i];
+
+            size++;
         }
     }
 }

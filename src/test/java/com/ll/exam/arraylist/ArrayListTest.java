@@ -25,16 +25,16 @@ public class ArrayListTest {
     public void test__growCapacity() throws IOException {
         ArrayList<Integer> alist = new ArrayList<>();
         Util util = new Util();
-        PrintStream sysout = util.toFileRedirection("grow.txt");
+        util.toFileRedirection("grow.txt");
+
         alist.add(100);
         alist.add(200);
         alist.add(300);
         alist.add(400);
         alist.add(500);
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("grow.txt")));
-        assertEquals("배열의 크기가 4에서 8으로 증가하였습니다.", br.readLine());
-        br.close();
-        util.toConsoleRedirection(sysout);
+
+        assertEquals("배열의 크기가 4에서 8으로 증가하였습니다.", util.readPrint("grow.txt"));
+
         //System.out.println("console back");
     }
 
@@ -63,6 +63,31 @@ public class ArrayListTest {
         assertEquals(200,alist.get(0).intValue());
     }
 
+    @Test
+    public void test__showAllelement() throws IOException {
+        Util util = new Util();
+        ArrayList<Integer> alist = new ArrayList<>();
+        alist.add(100);
+        alist.add(200);
+        alist.add(300);
+        util.toFileRedirection("showAll.txt");
+        alist.showAllelement();
+        assertEquals("100 200 300 ",util.readPrint("showAll.txt") );
 
+
+    }
+    @Test
+    public void test__addToIndex() throws IOException {
+        Util util = new Util();
+        ArrayList<Integer> alist = new ArrayList<>();
+        alist.add(100);
+        alist.add(200);
+        alist.add(300);
+        alist.add(700,1);
+
+        util.toFileRedirection("addToIndex.txt");
+        alist.showAllelement();
+        assertEquals("100 700 200 300 ",util.readPrint("addToIndex.txt"));
+    }
 
 }

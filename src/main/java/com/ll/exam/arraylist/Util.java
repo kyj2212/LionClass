@@ -1,10 +1,13 @@
 package com.ll.exam.arraylist;
 
+import javax.swing.*;
 import java.io.*;
 
 public class Util {
 
-    public PrintStream toFileRedirection(String filename) throws FileNotFoundException {
+    private final static PrintStream sysout = System.out;
+
+    public void toFileRedirection(String filename) throws FileNotFoundException {
         File file = new File(filename);
         PrintStream pr = new PrintStream(new FileOutputStream(file));
         PrintStream sysout = System.out;
@@ -13,10 +16,20 @@ public class Util {
        // System.setOut(sysout);
 
         //BufferedReader br = new BufferedReader(new FileReader(file));
-        return sysout;
+
     }
 
-    void toConsoleRedirection(PrintStream sysout){
+    void toConsoleRedirection(){
         System.setOut(sysout);
+    }
+
+
+    String readPrint(String filename) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
+        String printed = br.readLine();
+        br.close();
+        toConsoleRedirection();
+        return printed;
+
     }
 }
