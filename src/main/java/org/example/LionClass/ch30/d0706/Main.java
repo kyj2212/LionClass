@@ -1,4 +1,4 @@
-package org.example.LionClass.d0706;
+package org.example.LionClass.ch30.d0706;
 
 import java.util.ArrayList;
 import java.util.Arrays;
