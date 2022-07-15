@@ -26,7 +26,13 @@ public class Util {
 
     String readPrint(String filename) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
-        String printed = br.readLine();
+        String printed="";
+        while(true){
+            String str= br.readLine();
+            if(str==null)
+                break;
+            printed+=str+"\n";
+        }
         br.close();
         toConsoleRedirection();
         return printed;

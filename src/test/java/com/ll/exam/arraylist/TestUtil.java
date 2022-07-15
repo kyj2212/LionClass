@@ -11,7 +11,7 @@ public class TestUtil {
     @Test
     public void test_redirect_printstream() throws IOException {
 
-        File file = new File("test_sysout.txt");
+        File file = new File(".\\test\\test_sysout.txt");
         PrintStream pr = new PrintStream(new FileOutputStream(file));
         //BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("test_filewriter.txt"))));
         PrintStream sysout = System.out;
