@@ -42,4 +42,11 @@ public class ArrayListTest {
         assertEquals(100,alist.get(0).intValue());
     }
 
+    @Test
+    public void test__getsize(){
+        ArrayList<Integer> alist = new ArrayList<>();
+        alist.add(100);
+        assertEquals(1, alist.size());
+    }
+
 }

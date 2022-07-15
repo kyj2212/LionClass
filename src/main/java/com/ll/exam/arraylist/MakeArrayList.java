@@ -58,5 +58,9 @@ public class MakeArrayList {
             System.err.println("[IndexOutBoundsException] get("+ idx+")은 boundary를 넘었습니다.");
             return false;
         }
+
+        public int size() {
+            return this.size;
+        }
     }
 }
