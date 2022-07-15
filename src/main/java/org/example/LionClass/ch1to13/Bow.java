@@ -1,5 +1,7 @@
 package org.example.LionClass.ch1to13;
 
+import org.example.LionClass.ch1to13.Weapon;
+
 public class Bow extends Weapon {
 
     public String type = "활";

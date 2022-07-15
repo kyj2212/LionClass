@@ -12,7 +12,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>RELEASE</version>
-            <scope>test</scope>k
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
