@@ -65,7 +65,7 @@ public class MakeArrayList {
 		*/
 
         al.add(700, 1);
-        al.showAllValues();
+//        al.showAllValues();
 
         al.add(750, 1);
         al.showAllValues();
@@ -85,12 +85,12 @@ public class MakeArrayList {
 
     public static class ArrayList<E> {
 
-        private final int initCapacity=1; // 실제 ArrayList = 10으로 잡혀있다.
-        private Data[] arr;
+        private final int initCapacity=4; // 실제 ArrayList = 10으로 잡혀있다.
+        private Object[] arr;
         private int size;
 
         ArrayList() {
-            this.arr=new Data[initCapacity];
+            this.arr=new Object[initCapacity];
             this.size=0;
         }
 
@@ -99,48 +99,50 @@ public class MakeArrayList {
         }
 
         private void grow(){
-            if(isOverCapacity()){
-
-                System.out.printf("배열의 크기가 "+arr.length);
-                Data tmp [] = arr.clone();
-                int newCapacity = size*2;
-                arr = new Data[newCapacity];
-                System.out.println("에서 "+arr.length+"으로 증가하였습니다.");
-                System.out.printf("grow : ");
-                for(int i =0;i<size;i++){
-                    arr[i]=tmp[i];
-                }
-                for(Data i : arr)
-                    System.out.printf(i+",");
-                System.out.println();
+            System.out.printf("배열의 크기가 "+arr.length);
+            Object tmp [] = arr.clone();
+            int newCapacity = size*2;
+            arr = new Object[newCapacity];
+            System.out.println("에서 "+arr.length+"으로 증가하였습니다.");
+//            System.out.printf("grow : ");
+            for(int i =0;i<size;i++){
+                arr[i]=tmp[i];
             }
+/*
+            for(Object i : arr)
+                System.out.printf(i+",");
+            System.out.println();
+*/
         }
 
         private boolean isOverCapacity(){
-            int capacity = arr.length;
-            if(size>= capacity)
+          //  int capacity = arr.length;
+            if(size>= arr.length)
                 return true;
             else return false;
         }
 
         public void add (E data, int idx){
-           // Integer intdata=(Integer) data;
-            grow();
-            Data [] tmp= new Data[size-idx];
-            for(int i=0; i<size-idx;i++) {
+            if(isOverCapacity())
+                grow();
+            Object [] tmp= new Object[size-idx];
+
+            for(int i=0; i<size-idx;i++)
                 tmp[i] = arr[i+idx];
-                //arr[i+1]=tmp;
-                //arr[i+1] = arr[i];
-            }
-            arr[idx]=new Data(data);
-            for (int i=0;i<size-idx;i++){
+
+            arr[idx]=data;
+            for (int i=0;i<size-idx;i++)
                 arr[i+idx+1]=tmp[i];
-            }
+
             size++;
+
+
+/*
             System.out.printf("arr : ");
             for(Object i : arr)
                 System.out.printf(i+",");
             System.out.println();
+*/
         }
 
         /*
@@ -165,31 +167,30 @@ public class MakeArrayList {
 
         public E get (int i){
 
-
-
             if(checkIdxBounds(i))
-                return (E)arr[i].intValue();
+                return (E)arr[i];
             else return null;
         }
 
         private boolean checkIdxBounds(int idx) {
             if(idx<size) return true;
-            System.err.println("[IndexOutBoundsException] "+ idx+"은 boundary를 넘었습니다.");
+            System.err.println("[IndexOutBoundsException] get("+ idx+")은 boundary를 넘었습니다.");
             return false;
         }
 
         public void removeAt(int del) {
-            //int [] tmp = new int[size-del];
-            Data tmp;
+            Object tmp;
             for(int i=del; i<size;i++) {
                 tmp = arr[i+1];
                 arr[i] = tmp;
             }
             size--;
+/*
             System.out.printf("remove : ");
             for(Object i : arr)
                 System.out.printf(i+",");
             System.out.println();
+*/
         }
 
         public void showAllValues() {
@@ -200,6 +201,7 @@ public class MakeArrayList {
         }
     }
 
+    /*
     public static class Data{
         private Object data;
         public Data(Object data){
@@ -211,5 +213,7 @@ public class MakeArrayList {
             return String.valueOf(data);
         }
     }
+
+     */
 }
 
