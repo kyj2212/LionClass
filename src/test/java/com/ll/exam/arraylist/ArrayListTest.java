@@ -2,11 +2,8 @@ package com.ll.exam.arraylist;
 
 import com.ll.exam.arraylist.MakeArrayList.ArrayList;
 import org.testng.annotations.Test;
-import com.ll.exam.arraylist.Util;
-
-import java.io.*;
-
-import static org.testng.AssertJUnit.*;
+import java.io.IOException;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class ArrayListTest {
 
@@ -24,18 +21,13 @@ public class ArrayListTest {
     @Test
     public void test__growCapacity() throws IOException {
         ArrayList<Integer> alist = new ArrayList<>();
-        Util util = new Util();
-        util.toFileRedirection(".\\test\\grow.txt");
-
+        TestUtil.toFileRedirection(".\\test\\grow.txt");
         alist.add(100);
         alist.add(200);
         alist.add(300);
         alist.add(400);
         alist.add(500);
-
-        assertEquals("배열의 크기가 4에서 8으로 증가하였습니다.\n", util.readPrint(".\\test\\grow.txt"));
-
-        //System.out.println("console back");
+        assertEquals("배열의 크기가 4에서 8으로 증가하였습니다.\n", TestUtil.readPrint(".\\test\\grow.txt"));
     }
 
     @Test
@@ -65,31 +57,29 @@ public class ArrayListTest {
 
     @Test
     public void test__showAllelement() throws IOException {
-        Util util = new Util();
         ArrayList<Integer> alist = new ArrayList<>();
         alist.add(100);
         alist.add(200);
         alist.add(300);
-        util.toFileRedirection(".\\test\\showAll.txt");
+        TestUtil.toFileRedirection(".\\test\\showAll.txt");
         alist.showAllelements();
         assertEquals("=== 전체 데이터 출력 ===\n"+
-                "100 200 300 \n",util.readPrint(".\\test\\showAll.txt") );
+                "100 200 300 \n",TestUtil.readPrint(".\\test\\showAll.txt") );
 
 
     }
     @Test
     public void test__addToIndex() throws IOException {
-        Util util = new Util();
         ArrayList<Integer> alist = new ArrayList<>();
         alist.add(100);
         alist.add(200);
         alist.add(300);
         alist.add(700,1);
 
-        util.toFileRedirection(".\\test\\addToIndex.txt");
+        TestUtil.toFileRedirection(".\\test\\addToIndex.txt");
         alist.showAllelements();
         assertEquals("=== 전체 데이터 출력 ===\n"+
-                "100 700 200 300 \n",util.readPrint(".\\test\\addToIndex.txt"));
+                "100 700 200 300 \n",TestUtil.readPrint(".\\test\\addToIndex.txt"));
     }
 
 }
