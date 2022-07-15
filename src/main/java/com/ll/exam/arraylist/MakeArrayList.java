@@ -8,7 +8,7 @@ public class MakeArrayList {
 
     public static class ArrayList<E>{
 
-        private final int initCapacity=1; // 실제 ArrayList = 10으로 잡혀있다.
+        private final int initCapacity=4; // 실제 ArrayList = 10으로 잡혀있다.
         private Object[] arr;
         private int size;
 
@@ -61,6 +61,17 @@ public class MakeArrayList {
 
         public int size() {
             return this.size;
+        }
+
+        public E removeAt(int del) {
+            Object tmp,removed;
+            removed = arr[del];
+            for(int i=del; i<size;i++) {
+                tmp = arr[i+1];
+                arr[i] = tmp;
+            }
+            size--;
+            return (E)removed;
         }
     }
 }

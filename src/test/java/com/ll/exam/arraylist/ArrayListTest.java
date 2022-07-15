@@ -28,8 +28,11 @@ public class ArrayListTest {
         PrintStream sysout = util.toFileRedirection("grow.txt");
         alist.add(100);
         alist.add(200);
+        alist.add(300);
+        alist.add(400);
+        alist.add(500);
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("grow.txt")));
-        assertEquals("배열의 크기가 1에서 2으로 증가하였습니다.", br.readLine());
+        assertEquals("배열의 크기가 4에서 8으로 증가하였습니다.", br.readLine());
         br.close();
         util.toConsoleRedirection(sysout);
         //System.out.println("console back");
@@ -48,5 +51,18 @@ public class ArrayListTest {
         alist.add(100);
         assertEquals(1, alist.size());
     }
+
+    @Test
+    public void test__removeAt(){
+        ArrayList<Integer> alist = new ArrayList<>();
+        alist.add(100);
+        alist.add(200);
+
+        assertEquals(100,alist.get(0).intValue());
+        assertEquals(100,alist.removeAt(0).intValue());
+        assertEquals(200,alist.get(0).intValue());
+    }
+
+
 
 }
