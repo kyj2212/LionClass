@@ -1,5 +1,17 @@
 package com.ll.exam.arraylist;
 
+
+
+
+// 문제 : 사용자에게 숫자를 입력받고, 평균과 총합을 출력해주세요.
+// 조건 : 처음에는 정수 5개를 받고, 평균과 총합을 출력해주세요.
+// 조건 : 처음에는 실수 5개를 받고, 평균과 총합을 출력해주세요.
+// 조건 : ArrayList 클래스를 직접구현해주세요.
+// 조건 : ArrayList 클래스에 get, add, size, extendDatasSizeIfNeed(private) 메서드를 구현해주세요.
+// 조건 : ArrayList 클래스에 제너릭을 적용해주세요.
+// 조건 : Scanner 를 사용해주세요.
+
+
 public class MakeArrayList {
 
     public static void main(String[] args) {
