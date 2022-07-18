@@ -98,6 +98,7 @@ public class HashMapTest {
         map.put("영희",22);
         map.get("영희");
         map.remove("영희");
+        Integer a;
     }
 
 
