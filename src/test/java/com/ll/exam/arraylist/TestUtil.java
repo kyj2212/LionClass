@@ -3,6 +3,7 @@ package com.ll.exam.arraylist;
 import org.testng.annotations.Test;
 
 import java.io.*;
+import java.util.ArrayList;
 
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -58,6 +59,11 @@ public class TestUtil {
         System.out.println(String.valueOf("test"));
         System.out.println("test2".toString());  // Windows 의 경우 개행 문자를 \r\n으로 사용
         assertEquals("test\r\ntest2",readPrintByteArray(output) );
+    }
+
+    public void test__real_and_mine() {
+        ArrayList<Integer> alist = new ArrayList<>();
+        alist.contains(1);
     }
 
 

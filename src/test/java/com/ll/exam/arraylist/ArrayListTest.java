@@ -82,4 +82,14 @@ public class ArrayListTest {
                 "100 700 200 300 \n",TestUtil.readPrint(".\\test\\addToIndex.txt"));
     }
 
+
+    public void test__indexOf(){
+        ArrayList<Integer> alist = new ArrayList<>();
+        alist.add(100);
+        alist.add(200);
+        alist.add(300);
+
+        assertEquals(1,alist.indexOf(200));
+    }
+
 }

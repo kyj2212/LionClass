@@ -12,61 +12,62 @@ package com.ll.exam.arraylist;
 // 조건 : Scanner 를 사용해주세요.
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.StringTokenizer;
+
 public class MakeArrayList {
 
-    public static void main(String[] args) {
-        ArrayList<Integer> al = new ArrayList<>();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("=== 정수 ===");
+        System.out.println("정수 5개를 입력해 주세요. ex) 1 2 3 4 5");
+        StringTokenizer st = new StringTokenizer(br.readLine()," ");
 
-        System.out.println("al.size() : " + al.size());
-        // 출력 => al.size() : 0
 
-        al.add(100);
+        ArrayList<Integer> intList = new ArrayList<>();
+        while(st.hasMoreTokens())
+            intList.add(Integer.parseInt(st.nextToken()));
 
-        System.out.println("al.get(0) : " + al.get(0));
-        // 출력 => al.get(0) : 100
+        System.out.println("--- 결과 ---");
+        System.out.println("총합 : "+intSum(intList)+" 평균 : "+ intSum(intList)/intList.size());
 
-        al.add(200);
-        al.add(300);
-        // 출력 => 배열의 크기가 증가되었습니다. 2 => 4
 
-        System.out.println("al.size() : " + al.size());
-        // 출력 => al.size() : 3
+        System.out.println("=== 실수 ===");
+        System.out.println("실수 5개를 입력해 주세요. ex) 1.1 2.2 3.3 4.1 5.5");
+        st = new StringTokenizer(br.readLine()," ");
 
-        System.out.println("al.get(1) : " + al.get(1));
-        // 출력 => al.get(1) : 200
 
-        al.removeAt(1);
+        ArrayList<Double> doubleList = new ArrayList<>();
+        while(st.hasMoreTokens())
+            doubleList.add(Double.parseDouble(st.nextToken()));
 
-        System.out.println("al.size() : " + al.size());
-        // 출력 => al.size() : 2
+        System.out.println("--- 결과 ---");
+        System.out.println("총합 : "+doubleSum(doubleList)+" 평균 : "+ doubleSum(doubleList)/doubleList.size());
 
-        System.out.println("al.get(1) : " + al.get(1));
-        // 출력 => al.get(1) : 300
 
-        al.add(400);
-        al.add(500);
-        al.add(600);
-        // 출력 => 배열의 크기가 증가되었습니다. 4 => 8
-        System.out.println("al.size() : " + al.size());
 
-        System.out.println("al.get(3) + al.get(4) : " + (al.get(3) + al.get(4)));
-        // 출력 => al.get(3) + al.get(4) : 1100
 
-        System.out.println("al.get(5) : "+al.get(5));
-        // 출력 -> exception , indexOutOfBoundsException (throws exception 말고 일단 sys.err로 처리)
-
-        System.out.println("al.get(3).intValue() + al.get(4).intValue() : " + (al.get(3).intValue() + al.get(4).intValue()));
-        // 출력 => al.get(3) + al.get(4) : 1100
-
-        al.showAllelements();
-        // 출력 =>
-
-        al.add(700, 1);
-        al.showAllelements();
-
-        al.add(750, 1);
-        al.showAllelements();
     }
+
+    private static double doubleSum(ArrayList<Double> list) {
+        double sum=0.0;
+        for(int i=0;i<list.size();i++){
+            sum+=list.get(i);
+        }
+        return sum;
+    }
+
+    static int intSum(ArrayList<Integer> list){
+        int sum=0;
+        for(int i=0;i<list.size();i++){
+            sum+=list.get(i);
+        }
+        return sum;
+    }
+
 
     public static class ArrayList<E>{
 
@@ -96,11 +97,11 @@ public class MakeArrayList {
         }
 
         private void grow() {
-            System.out.printf("배열의 크기가 " + arr.length);
+           // System.out.printf("배열의 크기가 " + arr.length);
             Object tmp[] = arr.clone();
             int newCapacity = size * 2;
             arr = new Object[newCapacity];
-            System.out.println("에서 " + arr.length + "으로 증가하였습니다.");
+           // System.out.println("에서 " + arr.length + "으로 증가하였습니다.");
             for (int i = 0; i < size; i++) {
                 arr[i] = tmp[i];
             }
@@ -111,6 +112,9 @@ public class MakeArrayList {
                 return (E)arr[idx];
             else return null;
         }
+
+
+
 
         private boolean checkIdxBounds(int idx) {
             if(idx<size) return true;
@@ -154,6 +158,14 @@ public class MakeArrayList {
                 arr[i+idx+1]=tmp[i];
 
             size++;
+        }
+
+        public boolean contains(E data){
+            for(int i=0;i<size;i++){
+                if(arr[i].equals(data))
+                    return true;
+            }
+            return false;
         }
     }
 }
