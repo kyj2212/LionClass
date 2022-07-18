@@ -83,6 +83,7 @@ public class ArrayListTest {
     }
 
 
+    @Test
     public void test__indexOf(){
         ArrayList<Integer> alist = new ArrayList<>();
         alist.add(100);
@@ -90,6 +91,16 @@ public class ArrayListTest {
         alist.add(300);
 
         assertEquals(1,alist.indexOf(200));
+    }
+
+    @Test
+    public void test__contains(){
+        ArrayList<Integer> alist = new ArrayList<>();
+        alist.add(100);
+        alist.add(200);
+        alist.add(300);
+        assertEquals(true,alist.contains(200));
+        assertEquals(false,alist.contains(50));
     }
 
 }

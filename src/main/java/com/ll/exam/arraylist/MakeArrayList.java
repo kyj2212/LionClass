@@ -113,7 +113,14 @@ public class MakeArrayList {
             else return null;
         }
 
-
+        public int indexOf(E data){
+            // 해당 데이터의 value와 동일한 value를 가진 첫번째 index를 출력
+            for(int i=0;i<size;i++){
+                if(arr[i].equals(data))
+                    return i;
+            }
+            return -1;
+        }
 
 
         private boolean checkIdxBounds(int idx) {
@@ -161,11 +168,7 @@ public class MakeArrayList {
         }
 
         public boolean contains(E data){
-            for(int i=0;i<size;i++){
-                if(arr[i].equals(data))
-                    return true;
-            }
-            return false;
+            return indexOf(data)>=0?true:false;
         }
     }
 }
