@@ -69,6 +69,7 @@ public class TestUtil {
 
     //setout printstream -> bytearray with buffered -> buf.flush를 해줘야 하는구나!!!
     public String readPrintBuffered(BufferedOutputStream buf,ByteArrayOutputStream output) throws IOException {
+
         buf.flush();
         String anwser=output.toString();
         toConsoleRedirection();
