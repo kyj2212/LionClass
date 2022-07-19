@@ -1,6 +1,6 @@
 package org.example.LionClass.ch36;
 
-public class ArithmeticException01 {
+public class ExceptionEx01 {
 
     static class Main{
 
