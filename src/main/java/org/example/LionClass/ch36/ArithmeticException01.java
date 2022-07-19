@@ -2,23 +2,22 @@ package org.example.LionClass.ch36;
 
 public class ArithmeticException01 {
 
-
     static class Main{
+
         public static void main(String[] args) {
-            int rs = Calculater.divide(10, 0);
-            System.out.println(rs);
+            try{
+                int rs = Calculater.divide(10, 0);
+                System.out.println(rs);
+            }catch (ArithmeticException e){
+                System.out.println("Can't divide by 0");
+            }catch (Exception e){
+                System.out.println("Cant divide");
+            }
         }
     }
     private class Calculater {
-        static int divide(int a, int b) {
-            int rs = 0;
-            try{
-                rs=a/b;
-            }catch (ArithmeticException e){
-                rs=0;
-                System.out.println("can't divde 0");
-            }
-            return rs;
+        static int divide(int a, int b) throws ArithmeticException {
+            return a/b;
         }
     }
 }
