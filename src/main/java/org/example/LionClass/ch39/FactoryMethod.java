@@ -1,6 +1,8 @@
 package org.example.LionClass.ch39;
 
 
+import javax.swing.*;
+
 public class FactoryMethod {
 
 
@@ -47,76 +49,78 @@ public class FactoryMethod {
 
 class DuckFactory {
     static Duck get(String duckType){
-        if(duckType=="청둥")
-            return new MallardDuck();
-        else if(duckType=="흰")
-            return new WhiteDuck();
-        else if(duckType=="고무")
-            return new RubberDuck();
-        else if(duckType=="고무2")
-            return new RubberDuck2();
-        else if(duckType=="로봇")
-            return new RobotDuck();
-        else return new Duck();
+        Duck duck=Duck.getDuck(duckType);
+        if(duckType.equals("청둥")){
+            duck.setCryingItem(new QqCyringItem());
+            duck.setFlyingItem(new WingFlyingItem());
+        }else if(duckType.equals("흰")){
+            duck.setCryingItem(new QqCyringItem());
+            duck.setFlyingItem(new WingFlyingItem());
+        }else if(duckType.equals("고무")){
+            duck.setCryingItem(new FfCyringItem());
+            duck.setFlyingItem(new NoFlyingItem());
+        }else if(duckType.equals("고무2")){
+            duck.setCryingItem(new PpCryingItem());
+            duck.setFlyingItem(new NoFlyingItem());
+        }else if(duckType.equals("로봇")){
+            duck.setCryingItem(new NoCryingItem());
+            duck.setFlyingItem(new RocketFlyingItem());
+        }
+        return duck;
     }
 }
 
 
-abstract class FlyingItem { abstract void operate(String name);}
-class WingFlyingItem extends FlyingItem { void operate(String name) {System.out.println(name+" : 오리가 날개로 날아갑니다.");}}
-class NoFlyingItem extends FlyingItem { void operate(String name) {System.out.println(name+" : 저는 날 수 없어요. ㅜㅠ");}}
-class RocketFlyingItem extends FlyingItem { void operate(String name){System.out.println(name+" : 로켓파워로 날아갑니다.");}}
+abstract class FlyingItem { abstract void operate(String duckType);}
+class WingFlyingItem extends FlyingItem { void operate(String duckType) {System.out.println(duckType+" : 오리가 날개로 날아갑니다.");}}
+class NoFlyingItem extends FlyingItem { void operate(String duckType) {System.out.println(duckType+" : 저는 날 수 없어요. ㅜㅠ");}}
+class RocketFlyingItem extends FlyingItem { void operate(String duckType){System.out.println(duckType+" : 로켓파워로 날아갑니다.");}}
+
+abstract class CryingItem { abstract void operate(String duckType);}
+class QqCyringItem extends CryingItem { void operate(String duckType) {System.out.println(duckType+" : 꽥꽥!");}}
+class FfCyringItem extends CryingItem { void operate(String duckType) {System.out.println(duckType+" : 삑삑!");}}
+class PpCryingItem extends CryingItem { void operate(String duckType) {System.out.println(duckType+" : Peek Peek!");}}
+class NoCryingItem extends CryingItem { void operate(String duckType){System.out.println(duckType+" : 기계는 울 수 없습니다.");}}
+
+
 
 
 class Duck {
-    String name;
-    FlyingItem flyingItem;
+    String duckType;
+    private FlyingItem flyingItem;
+    private CryingItem cryingItem;
 
-    Duck(){
-        this(new WingFlyingItem());
+
+    private Duck(String duckType){
+        this.duckType=duckType;
+       // this(new WingFlyingItem(),new QqCyringItemItem());
     }
-    Duck(FlyingItem flyingItem){
+
+    public static Duck getDuck(String duckType){
+        return new Duck(duckType);
+    }
+
+    /*
+    private Duck(FlyingItem flyingItem, CryingItem cryingItem){
         this.name=getClass().getSimpleName();
         this.flyingItem=flyingItem;
+        this.cryingItem=cryingItem;
     }
+     */
 
-    void fly(){
-        flyingItem.operate(this.name);
+    public void fly(){
+        flyingItem.operate(duckType);
     }
 
     public void cry() {
-        System.out.println(this.name+ " : 꽥꽥!!");
+        cryingItem.operate(duckType);
     }
 
     public void setFlyingItem(FlyingItem flyingItem) {
         this.flyingItem=flyingItem;
     }
+
+    public void setCryingItem(CryingItem cryingItem) {this.cryingItem = cryingItem;}
 }
-
-class MallardDuck extends Duck { }
-
-class WhiteDuck extends Duck { }
-
-class RubberDuck extends Duck {
-    RubberDuck(){super(new NoFlyingItem());}
-    @Override
-    public void cry() {System.out.println(this.name+ " : 삑!삑!");}
-}
-
-class RubberDuck2 extends RubberDuck {
-
-    @Override
-    public void cry() {System.out.println(this.name+ " : Peek!Peek!");}
-}
-
-
-class RobotDuck extends Duck {
-
-    RobotDuck(){super(new RocketFlyingItem());}
-    @Override
-    public void cry() {System.out.println(this.name+" : 기계는 울 수 없습니다.");}
-}
-
-
 
 
