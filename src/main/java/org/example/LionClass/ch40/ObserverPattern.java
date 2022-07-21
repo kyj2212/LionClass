@@ -26,11 +26,14 @@ public class ObserverPattern {
     interface Listener{
         public void listen(String msg);
     }
+    interface ClickListener{
+        public void clickListen(String msg);
+    }
 
     static class Button{
 
         private Listener listener;
-        private Object clickEventListener;
+        private ClickListener clickEventListener;
 
         void setListener(Listener listener){
             this.listener=listener;
@@ -40,31 +43,29 @@ public class ObserverPattern {
             listener.listen("버튼 click");
         }
 
-        public void setClickEventListener(Object clickEventListener) {
+        public void setClickEventListener(ClickListener clickEventListener) {
             this.clickEventListener=clickEventListener;
         }
 
         void fireClick(){
-            if(clickEventListener instanceof Cat)
-                ((Cat)clickEventListener).getClickEvent();
-            else if(clickEventListener instanceof Dog)
-                ((Dog)clickEventListener).getClickEvent();
-            else if(clickEventListener instanceof Owl)
-                ((Owl)clickEventListener).getClickEvent();
+            clickEventListener.clickListen("버튼 클릭");
         }
     }
-    private static class Cat {
-        public void getClickEvent(){
+    private static class Cat implements ClickListener{
+        @Override
+        public void clickListen(String msg) {
             System.out.println("고양이는 방금 버튼 클릭되었다는 사실을 전달받았습니다.");
         }
     }
-    private static class Dog  {
-        public void getClickEvent(){
+    private static class Dog  implements ClickListener{
+        @Override
+        public void clickListen(String msg) {
             System.out.println("강아지는 방금 버튼 클릭되었다는 사실을 전달받았습니다.");
         }
     }
-    private static class Owl {
-        public void getClickEvent(){
+    private static class Owl implements ClickListener{
+        @Override
+        public void clickListen(String msg) {
             System.out.println("부엉이는 방금 버튼 클릭되었다는 사실을 전달받았습니다.");
         }
     }
@@ -80,6 +81,7 @@ public class ObserverPattern {
         }
     }
 
+    // 인터페이스를 사용
     static void sol02(){
 
             // no use 상속, 구현
@@ -100,6 +102,8 @@ public class ObserverPattern {
 
 
     }
+
+
 
 
 
