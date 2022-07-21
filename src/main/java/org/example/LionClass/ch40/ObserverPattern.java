@@ -30,8 +30,7 @@ public class ObserverPattern {
     static class Button{
 
         private Listener listener;
-        private Object obj;
-        private String mode;
+        private Object clickEventListener;
 
         void setListener(Listener listener){
             this.listener=listener;
@@ -41,26 +40,17 @@ public class ObserverPattern {
             listener.listen("버튼 click");
         }
 
-        public void setClickEventListener(Cat cat) {
-            this.obj=cat;
-            mode="cat";
-        }
-        public void setClickEventListener(Dog dog) {
-            this.obj=dog;
-            mode="dog";
-        }
-        public void setClickEventListener(Owl owl) {
-            this.obj=owl;
-            mode="owl";
+        public void setClickEventListener(Object clickEventListener) {
+            this.clickEventListener=clickEventListener;
         }
 
         void fireClick(){
-            if(mode.equals("cat"))
-                ((Cat)obj).getClickEvent();
-            else if(mode.equals("dog"))
-                ((Dog)obj).getClickEvent();
-            else if(mode.equals("owl"))
-                ((Owl)obj).getClickEvent();
+            if(clickEventListener instanceof Cat)
+                ((Cat)clickEventListener).getClickEvent();
+            else if(clickEventListener instanceof Dog)
+                ((Dog)clickEventListener).getClickEvent();
+            else if(clickEventListener instanceof Owl)
+                ((Owl)clickEventListener).getClickEvent();
         }
     }
     private static class Cat {
@@ -110,6 +100,8 @@ public class ObserverPattern {
 
 
     }
+
+
 
 
 
