@@ -27,7 +27,7 @@ public class ObserverPattern {
         public void listen(String msg);
     }
     interface ClickListener{
-        public void clickListen(String msg);
+        public void onClick(String msg);
     }
 
     static class Button{
@@ -48,25 +48,40 @@ public class ObserverPattern {
         }
 
         void fireClick(){
-            clickEventListener.clickListen("버튼 클릭");
+            clickEventListener.onClick("버튼 클릭");
         }
     }
     private static class Cat implements ClickListener{
-        @Override
-        public void clickListen(String msg) {
+
+        public void clickResponse(){
             System.out.println("고양이는 방금 버튼 클릭되었다는 사실을 전달받았습니다.");
+
+        }
+        @Override
+        public void onClick(String msg) {
+            clickResponse();
         }
     }
     private static class Dog  implements ClickListener{
-        @Override
-        public void clickListen(String msg) {
+
+        public void response(){
             System.out.println("강아지는 방금 버튼 클릭되었다는 사실을 전달받았습니다.");
+
+        }
+        @Override
+        public void onClick(String msg) {
+            response();
         }
     }
     private static class Owl implements ClickListener{
-        @Override
-        public void clickListen(String msg) {
+
+        public void getButtonClick(){
             System.out.println("부엉이는 방금 버튼 클릭되었다는 사실을 전달받았습니다.");
+        }
+
+        @Override
+        public void onClick(String msg) {
+            getButtonClick();
         }
     }
 
